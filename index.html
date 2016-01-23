@@ -97,9 +97,9 @@
         </div>
       </div>
     </div>
-  
-    <!-- Modal for Text-->
-    <div class="modal fade" id="textModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <!-- Modal for URL-->
+    <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -107,8 +107,8 @@
             <h4 class="modal-title" id="myModalLabel">Copy and Paste Text</h4>
           </div>
           <div class="modal-body">
-            Paste your text in the field below:
-            <textarea class="form-control" rows="12"></textarea>
+            Paste the URL below:
+            <textarea class="form-control" rows="1"></textarea>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -148,18 +148,17 @@
         <h1><b>UNotes:</b> The Personal Study Notes Generator</h1>
         <p class="lead">Use this service to turn large sums of text into easily studied bullet point notes.<br>Export to a printable PDF file or create study sets on Quizlet.</p>
         <p>
-          <div style="width: 855px; margin:0 auto; text-align: center;">
-          <div class="row">
-            <div class="col-md-4">
-              <button  type="button" style=" width: 200px;  margin-left: 10px; margin-right: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#uploadModal">Import</button>
-            </div>
-            <div class="col-md-4">
-              or
-            </div>
-            <div class="col-md-4">
-               <button  type="button" style="width: 200px; margin-left: 10px; margin-right: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#textModal">Copy and Paste</button>
-            </div>
+        <div class="row" style="margin: auto;">
+          <div class="col-md-4">
+            <button  type="button" style=" width: 200px;  margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#uploadModal">From File</button>
           </div>
+          <div class="col-md-4">
+            <button  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#textModal">From Raw Text</button>
+          </div>
+          <div class="col-md-4">
+            <button  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#urlModal">From URL</button>
+          </div>
+        </div>
           </div>
           </p>
         
