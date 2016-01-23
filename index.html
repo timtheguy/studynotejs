@@ -64,12 +64,12 @@
     <script>
         function textAdded(method) {
             document.getElementById('part2').style.display = 'block';
-
+            document.getElementById('part2').focus();
             
             if (method=="copyandpaste") {
-                
+                //process form text and send it to parsing algorithm 
             }else if (method=="fileupload") {
-                //code
+                //process uploaded file and send it to parsing algorithm
             }
         }
     </script>
@@ -168,6 +168,7 @@
     
     <!-- Part 2 -->
     <div id="part2" style="display: none">
+      <hr>
         <div class="part2container">
             <div class="row">
                 <div class="col-xs-6">
@@ -175,13 +176,36 @@
                     <p>The form below contains three checkboxes. The last option is disabled:</p>
                     <form role="form">
                       <div class="checkbox">
-                        <label><input type="checkbox" value="">Bold key terms</label>
+                        <label><input type="checkbox" value="">Bold key terms?</label>
                       </div>
                       <div class="checkbox">
-                        <label><input type="checkbox" value="">Option 2</label>
+                        <label><input type="checkbox" value="">Assess the readibility and predict studying time?</label>
                       </div>
                       <div class="checkbox">
-                        <label><input type="checkbox" value="" disabled>Option 3</label>
+                        <label><input type="checkbox" value="" >Assess the amount learned?</label>
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox" value="" >Assess the topic of the text uploaded?</label>
+                      </div>
+                      </br>
+                      Font size:
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          Small
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                          Medium
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                          Large
+                        </label>
                       </div>
                     </form>
                 </div>
@@ -191,6 +215,8 @@
                     src="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf" /> 
                 </div>
             </div>
+            </br>
+        </br>
         </div>           
     </div>
     </div><!-- /.container -->
