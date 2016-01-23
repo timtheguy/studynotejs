@@ -61,6 +61,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="js/jspdf.js"></script>
+    <script src="js/FileSaver.js"></script>
     <script>
         function textAdded(method) {
             document.getElementById('part2').style.display = 'block';
@@ -71,7 +72,51 @@
             }else if (method=="fileupload") {
                 //process uploaded file and send it to parsing algorithm
             }
+            
+            processText();
         }
+        
+        var outtext;
+        
+        function processText(){
+            var str = document.getElementById('intext').value;
+            var words = str.split(".");
+            console.log(words);
+            //["This", "is", "an", "amazing", "sentence."]
+            var arrayLength = words.length;
+            
+            
+            index=arrayLength-1;
+            
+            if (index > -1) {
+                words.splice(index, 1);
+            }
+    
+            arrayLength = words.length;
+            
+            for (var i = 0; i < arrayLength; i++) {
+                //var old = document.getElementById('outtext').value;
+                //document.getElementById('outtext').value = old + " - " + words[i] + "\n"
+                
+                var old = outtext;
+                outtext = old + " - " + words[i] + "\n"
+            }
+        }
+        
+        function generatePreview() {
+            var doc = new jsPDF();
+            doc.text(10, 10, outtext);
+            document.getElementById(pdfViewer).setAttribute('src',doc.output('datauristring'));
+        }
+        
+        function makePDF() {
+            var doc = new jsPDF();
+            doc.text(10, 10, outtext);
+            doc.save('Test.pdf');
+        }
+        
+        
+        
     </script>
   </head>
 
@@ -97,7 +142,27 @@
         </div>
       </div>
     </div>
-
+    
+    <!-- Modal for TEXT-->
+    <div class="modal fade" id="textModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Copy and Paste Text</h4>
+          </div>
+          <div class="modal-body">
+            Paste the text you'd like to make into notes:
+            <textarea class="form-control" id="intext" rows="12"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button onclick="textAdded('copyandpaste')" type="button" data-dismiss="modal" class="btn btn-primary">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- Modal for URL-->
     <div class="modal fade" id="urlModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -159,7 +224,7 @@
             <button  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#urlModal">From URL</button>
           </div>
         </div>
-          </div>
+          
           </p>
         
       </div>
@@ -206,15 +271,21 @@
                           Large
                         </label>
                       </div>
+                      <button onclick="generatePreview()" type="button" style=" width: 200px;  margin: 10px;" class="btn btn-primary" >Preview</button>
                     </form>
                 </div>
-                <div class="col-xs-6">
-                    <embed name="plugin" type="application/pdf"
+                <div id="pdfviewholder" class="col-xs-6">
+                    <embed id="#pdfViewer" name="plugin" type="application/pdf"
                     width="100%" height="500px" 
                     src="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf" /> 
                 </div>
             </div>
             </br>
+            <textarea class="form-control" id="outtext" rows="12"></textarea>
+            
+            <center>
+            <button onclick="makePDF();"  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg"  >Make PDF</button>
+            </center>
         </br>
         </div>           
     </div>
