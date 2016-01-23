@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-TIM WAS HERE
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
     <title>UNotes</title>
 
     <!-- Bootstrap core CSS -->
@@ -59,13 +60,11 @@ TIM WAS HERE
     </style>-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="js/jspdf.js"></script>
     <script>
         function textAdded(method) {
             document.getElementById('part2').style.display = 'block';
-            $(document).ready(function(){
-            $("part2").fadeIn(5000);
-            }
-            
+
             
             if (method=="copyandpaste") {
                 
@@ -149,8 +148,19 @@ TIM WAS HERE
         <h1><b>UNotes:</b> The Personal Study Notes Generator</h1>
         <p class="lead">Use this service to turn large sums of text into easily studied bullet point notes.<br>Export to a printable PDF file or create study sets on Quizlet.</p>
         <p>
-            <button  type="button" style="width: 200px; margin-right: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#uploadModal">Import</button>  or  
-            <button  type="button" style="width: 200px; margin-left: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#textModal">Copy and Paste</button>
+          <div style="width: 855px; margin:0 auto; text-align: center;">
+          <div class="row">
+            <div class="col-md-4">
+              <button  type="button" style=" width: 200px;  margin-left: 10px; margin-right: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#uploadModal">Import</button>
+            </div>
+            <div class="col-md-4">
+              or
+            </div>
+            <div class="col-md-4">
+               <button  type="button" style="width: 200px; margin-left: 10px; margin-right: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#textModal">Copy and Paste</button>
+            </div>
+          </div>
+          </div>
           </p>
         
       </div>
@@ -158,9 +168,31 @@ TIM WAS HERE
     
     <!-- Part 2 -->
     <div id="part2" style="display: none">
-        <p>Yeet</p>
+        <div class="part2container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2>Output Preferences:</h2>
+                    <p>The form below contains three checkboxes. The last option is disabled:</p>
+                    <form role="form">
+                      <div class="checkbox">
+                        <label><input type="checkbox" value="">Bold key terms</label>
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox" value="">Option 2</label>
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox" value="" disabled>Option 3</label>
+                      </div>
+                    </form>
+                </div>
+                <div class="col-xs-6">
+                    <embed name="plugin" type="application/pdf"
+                    width="100%" height="500px" 
+                    src="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf" /> 
+                </div>
+            </div>
+        </div>           
     </div>
-    
     </div><!-- /.container -->
 
 
