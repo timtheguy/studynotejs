@@ -23,8 +23,10 @@
     <link href="starter-template.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
+    
+    <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,12 +62,25 @@
     </style>-->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    
+    <!--
     <script src="js/jspdf.js"></script>
     <script src="js/FileSaver.js"></script>
+    <script src="js/FromHTML.js"></script>
+    -->
+    
+    <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
     <script>
         function textAdded(method) {
             document.getElementById('part2').style.display = 'block';
             document.getElementById('part2').focus();
+            
+            ifrm = document.createElement("IFRAME");
+            var datauristring = "data:application/pdf;base64,JVBERi0xLjMKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL1Jlc291cmNlcyAyIDAgUgovQ29udGVudHMgNCAwIFI+PgplbmRvYmoKNCAwIG9iago8PC9MZW5ndGggMTIyPj4Kc3RyZWFtCjAuNTcgdwowIEcKQlQKL0YxIDE2IFRmCjE2IFRMCjAgZwoyOC4zNSA4MTMuNTQgVGQKKEhlbGxvIHdvcmxkISBUaGlzIGlzIGEgYmxhbmsgUERGIHdpdGhvdXQgYW55IHNwZWNpYWwgZm9ybWF0dGluZy4pIFRqCkVUCmVuZHN0cmVhbQplbmRvYmoKMSAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lkcyBbMyAwIFIgXQovQ291bnQgMQovTWVkaWFCb3ggWzAgMCA1OTUuMjggODQxLjg5XQo+PgplbmRvYmoKNSAwIG9iago8PC9CYXNlRm9udC9IZWx2ZXRpY2EvVHlwZS9Gb250Ci9FbmNvZGluZy9TdGFuZGFyZEVuY29kaW5nCi9TdWJ0eXBlL1R5cGUxPj4KZW5kb2JqCjYgMCBvYmoKPDwvQmFzZUZvbnQvSGVsdmV0aWNhLUJvbGQvVHlwZS9Gb250Ci9FbmNvZGluZy9TdGFuZGFyZEVuY29kaW5nCi9TdWJ0eXBlL1R5cGUxPj4KZW5kb2JqCjcgMCBvYmoKPDwvQmFzZUZvbnQvSGVsdmV0aWNhLU9ibGlxdWUvVHlwZS9Gb250Ci9FbmNvZGluZy9TdGFuZGFyZEVuY29kaW5nCi9TdWJ0eXBlL1R5cGUxPj4KZW5kb2JqCjggMCBvYmoKPDwvQmFzZUZvbnQvSGVsdmV0aWNhLUJvbGRPYmxpcXVlL1R5cGUvRm9udAovRW5jb2RpbmcvU3RhbmRhcmRFbmNvZGluZwovU3VidHlwZS9UeXBlMT4+CmVuZG9iago5IDAgb2JqCjw8L0Jhc2VGb250L0NvdXJpZXIvVHlwZS9Gb250Ci9FbmNvZGluZy9TdGFuZGFyZEVuY29kaW5nCi9TdWJ0eXBlL1R5cGUxPj4KZW5kb2JqCjEwIDAgb2JqCjw8L0Jhc2VGb250L0NvdXJpZXItQm9sZC9UeXBlL0ZvbnQKL0VuY29kaW5nL1N0YW5kYXJkRW5jb2RpbmcKL1N1YnR5cGUvVHlwZTE+PgplbmRvYmoKMTEgMCBvYmoKPDwvQmFzZUZvbnQvQ291cmllci1PYmxpcXVlL1R5cGUvRm9udAovRW5jb2RpbmcvU3RhbmRhcmRFbmNvZGluZwovU3VidHlwZS9UeXBlMT4+CmVuZG9iagoxMiAwIG9iago8PC9CYXNlRm9udC9Db3VyaWVyLUJvbGRPYmxpcXVlL1R5cGUvRm9udAovRW5jb2RpbmcvU3RhbmRhcmRFbmNvZGluZwovU3VidHlwZS9UeXBlMT4+CmVuZG9iagoxMyAwIG9iago8PC9CYXNlRm9udC9UaW1lcy1Sb21hbi9UeXBlL0ZvbnQKL0VuY29kaW5nL1N0YW5kYXJkRW5jb2RpbmcKL1N1YnR5cGUvVHlwZTE+PgplbmRvYmoKMTQgMCBvYmoKPDwvQmFzZUZvbnQvVGltZXMtQm9sZC9UeXBlL0ZvbnQKL0VuY29kaW5nL1N0YW5kYXJkRW5jb2RpbmcKL1N1YnR5cGUvVHlwZTE+PgplbmRvYmoKMTUgMCBvYmoKPDwvQmFzZUZvbnQvVGltZXMtSXRhbGljL1R5cGUvRm9udAovRW5jb2RpbmcvU3RhbmRhcmRFbmNvZGluZwovU3VidHlwZS9UeXBlMT4+CmVuZG9iagoxNiAwIG9iago8PC9CYXNlRm9udC9UaW1lcy1Cb2xkSXRhbGljL1R5cGUvRm9udAovRW5jb2RpbmcvU3RhbmRhcmRFbmNvZGluZwovU3VidHlwZS9UeXBlMT4+CmVuZG9iagoyIDAgb2JqCjw8Ci9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXQovRm9udCA8PAovRjEgNSAwIFIKL0YyIDYgMCBSCi9GMyA3IDAgUgovRjQgOCAwIFIKL0Y1IDkgMCBSCi9GNiAxMCAwIFIKL0Y3IDExIDAgUgovRjggMTIgMCBSCi9GOSAxMyAwIFIKL0YxMCAxNCAwIFIKL0YxMSAxNSAwIFIKL0YxMiAxNiAwIFIKPj4KL1hPYmplY3QgPDwKPj4KPj4KZW5kb2JqCjE3IDAgb2JqCjw8Ci9Qcm9kdWNlciAoanNQREYgMC45LjByYzIpCi9DcmVhdGlvbkRhdGUgKEQ6MjAxNjAxMjMxODQyMDMpCj4+CmVuZG9iagoxOCAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMSAwIFIKL09wZW5BY3Rpb24gWzMgMCBSIC9GaXRIIG51bGxdCi9QYWdlTGF5b3V0IC9PbmVDb2x1bW4KPj4KZW5kb2JqCnhyZWYKMCAxOQowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAyNTggMDAwMDAgbiAKMDAwMDAwMTQ5OSAwMDAwMCBuIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwODcgMDAwMDAgbiAKMDAwMDAwMDM0NSAwMDAwMCBuIAowMDAwMDAwNDM2IDAwMDAwIG4gCjAwMDAwMDA1MzIgMDAwMDAgbiAKMDAwMDAwMDYzMSAwMDAwMCBuIAowMDAwMDAwNzM0IDAwMDAwIG4gCjAwMDAwMDA4MjMgMDAwMDAgbiAKMDAwMDAwMDkxOCAwMDAwMCBuIAowMDAwMDAxMDE2IDAwMDAwIG4gCjAwMDAwMDExMTggMDAwMDAgbiAKMDAwMDAwMTIxMiAwMDAwMCBuIAowMDAwMDAxMzA1IDAwMDAwIG4gCjAwMDAwMDE0MDAgMDAwMDAgbiAKMDAwMDAwMTcyMyAwMDAwMCBuIAowMDAwMDAxODA1IDAwMDAwIG4gCnRyYWlsZXIKPDwKL1NpemUgMTkKL1Jvb3QgMTggMCBSCi9JbmZvIDE3IDAgUgo+PgpzdGFydHhyZWYKMTkwOQolJUVPRg==";
+            ifrm.setAttribute("src", datauristring);
+            ifrm.style.width = "100%";
+            ifrm.style.height = "500px";
+            $('#pdfviewholder').html(ifrm);
             
             if (method=="copyandpaste") {
                 //process form text and send it to parsing algorithm 
@@ -76,7 +91,7 @@
             processText();
         }
         
-        var outtext;
+        var outtext = "";
         
         function processText(){
             var str = document.getElementById('intext').value;
@@ -105,22 +120,88 @@
         
         function generatePreview() {
             var doc = new jsPDF();
-            doc.text(10, 10, outtext);
-            document.getElementById(pdfViewer).setAttribute('src',doc.output('datauristring'));
+            doc.text(10, 10, 'Update success!');
+            
+            //var iframe = document.getElementById('pdfviewholder');
+            var datauristring = doc.output('datauristring');
+            console.log(datauristring);
+            //iframe.src = (datauristring);
+            /*
+            var pdf = new PDFObject({
+              url: (datauristring),
+              id: "pdfRendered",
+              pdfOpenParams: {
+                view: "FitH"
+              }
+            }).embed("pdfviewholder");
+            */
+            
+
+            ifrm = document.createElement("IFRAME");
+            ifrm.setAttribute("src", datauristring);
+            ifrm.style.width = "100%";
+            ifrm.style.height = "500px";
+            $('#pdfviewholder').html(ifrm);
+            
+            //console.log(doc.output('datauristring'));
+            //var preview=document.getElementById("pdfviewholder");
+            //var clone=preview.cloneNode(true);
+            //clone.setAttribute('src',(datauristring));
+            //preview.parentNode.replaceChild(clone,preview)
         }
         
         function makePDF() {
-            var doc = new jsPDF();
-            doc.text(10, 10, outtext);
-            doc.save('Test.pdf');
-        }
-        
-        
+            //var doc = new jsPDF();
+            //doc.setFontSize(22);
+            //doc.text(20, 20, 'This is a title');
+            
+            //doc.setFontSize(16);
+            //doc.text(20, 30, 'This is some normal sized text underneath. This is some normal sized text underneath.  This is some normal sized text underneath.  This is some normal sized text underneath.  This is some normal sized text underneath.  This is some normal sized text underneath.');
+            //doc.output('datauri');
+            
+            var doc = new jsPDF('p', 'in', 'letter');
+            var source = $('#testcase').first();
+            var specialElementHandlers = {
+            '#bypassme': function(element, renderer) {
+            return true;
+            }
+            };
+             
+            doc.fromHTML(
+            source, // HTML string or DOM elem ref.
+            0.5, // x coord
+            0.5, // y coord
+            {
+            'width': 7.5, // max width of content on PDF
+            'elementHandlers': specialElementHandlers
+            });
+             
+            doc.output('dataurl');
+            }
+
+            
+            //pdf.output('datauri');
+            
+            /*
+            doc.setFontSize(16);
+            doc.text(20, 30, outtext);
+            
+*/  
+
         
     </script>
   </head>
 
   <body><!-- Button trigger modal -->
+    <div id="testcase">
+ 
+<h1>
+We support special element handlers. Register them with jQuery-style.
+</h1>
+ 
+</div>
+  
+  
   
     <!-- Modal for Upload -->
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -274,11 +355,16 @@
                       <button onclick="generatePreview()" type="button" style=" width: 200px;  margin: 10px;" class="btn btn-primary" >Preview</button>
                     </form>
                 </div>
+            <!--
                 <div id="pdfviewholder" class="col-xs-6">
                     <embed id="#pdfViewer" name="plugin" type="application/pdf"
                     width="100%" height="500px" 
                     src="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf" /> 
                 </div>
+            -->
+            <div id="pdfviewholder" class="col-xs-6">
+            </div>
+            
             </div>
             </br>
             <textarea class="form-control" id="outtext" rows="12"></textarea>
