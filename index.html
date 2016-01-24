@@ -79,6 +79,25 @@
     
     <script src="http://mrrio.github.io/jsPDF/dist/jspdf.debug.js"></script>
     <script>
+        function externalCall() {
+              var parameters = location.search.substring(1).split("&");
+
+              var temp = parameters[0].split("=");
+              l = unescape(temp[1]);
+              
+              if (l == "undefined") {
+                //code  
+              }else{;
+                  var outtext1 = l.substring(1, l.length-1);
+                  document.getElementById('intext').value = outtext1;
+                  
+                  processText();
+                  makePDF();
+              }
+
+        }
+      
+      
         function textAdded(method) {
             document.getElementById('part2').style.display = 'block';
             window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
@@ -327,7 +346,7 @@
     </script>
   </head>
 
-  <body><!-- Button trigger modal -->
+  <body onload="externalCall()"><!-- Button trigger modal -->
  
     <!-- Modal for Upload -->
     <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
