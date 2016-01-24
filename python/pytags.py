@@ -1,3 +1,8 @@
+"""Created by Jonathan Rach for the SwampHacks 2016 Hackathon Project"""
+"""This file contains the implementation of the DatumBox API to return keyword tags to passed strings or pdf files."""
+"""This file also contains code to convert the passed reference to a pdf to text and return the tags on the text contained """
+"""within the pdf file."""
+
 from DatumBox import DatumBox
 import pydfconversion
 API_KEY = "454ec357b72e7d0c06cac8df90bb8862"

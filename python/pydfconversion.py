@@ -7,8 +7,8 @@ import PyPDF2
 def getPDFText(PATH):
     i=0
     totalText = ""
-    if PATH == "":
-        PATH= raw_input("Please enter the name of the pdf you would like converted to text: ")
+    """if PATH == "":
+        PATH= raw_input("Please enter the name of the pdf you would like converted to text: ")"""
     pdfFileObj = open (PATH, 'rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     #print "This pdf has %i pages" % pdfReader.numPages
