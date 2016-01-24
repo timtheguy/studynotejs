@@ -1,10 +1,11 @@
 {
- "name": "Selected Text",
- "version": "0.1",
- "description": "Selected Text",
+ "name": "StudyNotesJS",
+ "version": "0.2",
+ "description": "Selected Text will be processed into a PDF.",
  "manifest_version": 2,
  "browser_action": {
    "default_title": "Selected Text",
+   "default_icon": "icon1.png",
    "default_popup": "popup.html" 
  },
  "permissions": [

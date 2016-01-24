@@ -89,10 +89,6 @@
         });
       }
       
-      $(document).ready(function(){
-          $('[data-toggle="popover"]').popover();   
-      });
-      
       function download(file)
       {
         window.location=file;
@@ -442,9 +438,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">Documentation</a></li>
-            <li><a href="contact.html">About the Team</a></li>
+            <li class="active"><a href="contact.html">About the Team</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <button style="width: 200px" title="We're sorry, but you can't install this to your computer! Our extension isn't published on the Chrome store. :(" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">  +  Add to Chrome</button>
@@ -456,106 +452,59 @@
 
     <div class="container">
         
-        
-    <!-- Part 1 -->
-    <div>
-      <div id="part1" tabindex="1" class="starter-template">
-        <h1><b>StudyNoteJS:</b> The Personal Study Notes Generator</h1>
-        <p class="lead">Use this service to turn large sums of text into easily studied bullet point notes.<br>Export to a printable PDF file or create study sets on Quizlet.</p>
-        <p>
-          <button  type="button" style=" width: 200px;  margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#uploadModal"><span style="margin-right: 20px" class="glyphicon glyphicon-upload" aria-hidden="true"></span>Upload PDF</button>
-            <button  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#textModal"><span style="margin-right: 20px" class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Import Text     </button>
-        
-
-            <button  type="button" style="width: 200px; margin: 10px; display: none;" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#urlModal">From URL</button>
-
-          
-          </p>
-        
-      </div>
-    </div> <!-- /. Part 1 -->
-    
-    <!-- Part 2 -->
-    
-    <div id="part2" tabindex="2" style="display: none">
-      <hr>
-        <div class="part2container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <h2>Output Preferences:</h2>
-                    <p>Select an output style below, and then click "Preview" to see how these changes will have an effect on the final document:</p>
-                    <form role="form">
-                      <div class="checkbox" data-container="body" data-toggle="tooltip" data-placement="left" title="This will emphasize words and phrases that may be essential to the notes!">
-                        <label><input  id="checkBold" type="checkbox" value="">Bold key terms?</label>
-                      </div>
-                      <div class="checkbox" data-container="body" data-toggle="tooltip" data-placement="left" title="This will suggest the complexity and time needed for the study material! ">
-                        <label><input id="checkRead" type="checkbox" id=" value="">Assess the readibility and predict studying time?</label>
-                      </div>
-                      <div class="checkbox" data-container="body" data-toggle="tooltip" data-placement="left" title="This will guess the topic (one of twelve) for the material uploaded!">
-                        <label><input id="checkTopic" type="checkbox" value="" >Assess the topic of the text uploaded?</label>
-                      </div>
-                      </br>
-                      Font size:
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="fontSmall" value="option1" checked>
-                          Small
-                        </label>
-                      </div>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="fontMedium" value="option2">
-                          Medium
-                        </label>
-                      </div>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="fontLarge" value="option3">
-                          Large
-                        </label>
-                      </div>
-                      <button onclick="generatePreview()" type="button" style=" width: 200px;  margin: 10px;" class="btn btn-primary" >Preview</button>
-                    </form>
-                </div>
-            <!--
-                <div id="pdfviewholder" class="col-xs-6">
-                    <embed id="#pdfViewer" name="plugin" type="application/pdf"
-                    width="100%" height="500px" 
-                    src="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf" /> 
-                </div>
-            -->
-            <div id="pdfviewholder" class="col-xs-6">
-            </div>
-            
-            </div>
-            
-            
-        </br>
-        </div>           
-    </div>
-    <div id="part3" tabindex="3" style="display: none;">
-      </br>
-      <hr>
-        <center>
-          </br>
-            <p>That's it! Access your notes in one of two ways:</p>
-            <button onclick="makePDF();"  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg" >Open PDF</button>
-            <button onclick="getVocabulary(words);"  type="button" style="width: 200px; margin: 10px;" class="btn btn-primary btn-lg"  >Export to Quizlet</button>
-            
-        </center>
-    </div>
-    </br>
-            </br>
+        <div class="container">
+  <h2>Our Team</h2>
+  <p>A brief look at our team members and their background:</p>            
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Favorite Technology</th>
+        <th>Favorite Part of Swamphacks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Caeley</td>
+        <td>Looney</td>
+        <td>Wearables</td>
+        <td>"rip"</td>
+      </tr>
+      <tr>
+        <td>Tim</td>
+        <td>Christovich</td>
+        <td>Web technologies</td>
+        <td>Not sleeping... at all</td>
+      </tr>
+      <tr>
+        <td>Jon</td>
+        <td>Rach</td>
+        <td>Dank memes</td>
+        <td>also "rip"</td>
+      </tr>
+      <tr>
+        <td>Camille</td>
+        <td>Ramseur</td>
+        <td>Virtual reality</td>
+        <td>Finding out what "rip" means</td>
+      </tr>
+      <tr>
+        <td>Courtney</td>
+        <td>Thurston</td>
+        <td>Adobe</td>
+        <td>N/a</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+     
     </div><!-- /.container -->
     
     <script>
       $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
       });
-      // Select all elements with data-toggle="popover" in the document
-      $('[data-toggle="popover"]').popover(); 
-
-        $('#popover').popover(options)
       
       $('[rel=tooltip]').tooltip({container: 'body'});
     </script>
