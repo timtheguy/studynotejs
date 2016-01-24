@@ -1,15 +1,18 @@
-import pyPdf
+"""Created by Jonathan Rach for the SwampHacks 2016 Hackathon Project"""
+"""This file contains code that uses the PyPDF2 library to convert the pdf to text for analysis with the DatumBox API"""
+"""Inspiration for this code from https://automatetheboringstuff.com/chapter13/"""
+import PyPDF2
 
-def getPDFContent(path):
-    content = ""
-    # Load PDF into pyPDF
-    pdf = pyPdf.PdfFileReader(file(path, "rb"))
-    # Iterate pages
-    for i in range(0, pdf.getNumPages()):
-        # Extract text from page and add to content
-        content += pdf.getPage(i).extractText() + "\n"
-    # Collapse whitespace
-    content = " ".join(content.replace("\xa0", " ").strip().split())
-    return content
+#Method to return the text from each page of a pdf
+def getText(PATH):
+    i=0
+    totalText = ""
+    pdfFileObj = open (PATH, 'rb')
+    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
+    print "This pdf has %i pages" % pdfReader.numPages
+    while (i<pdfReader.numPages):
+        pageObj = pdfReader.getPage(i)
+        totalText += pageObj.extractText()
+        i+=1
+    return totalText
 
-print getPDFContent("test.pdf")
